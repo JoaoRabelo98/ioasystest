@@ -1,6 +1,7 @@
 import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import AppError from '@shared/errors/AppError';
+import { isTuesday } from 'date-fns';
 import AuthenticateUserService from '../AuthenticateUserService';
 import CreateUserService from '../CreateUserService';
 
@@ -43,5 +44,21 @@ describe('Authenticate User Service context', () => {
       expect(error).toBeInstanceOf(AppError);
       expect(error.message).toBe('Incorrect email/password combination');
     }
+  });
+
+  it('should be able to authenticate user correctly', async () => {
+    const userCreated = await createUserService.execute({
+      email: 'fake-email',
+      name: 'fake-name',
+      password: 'fake-password',
+    });
+
+    const { token, user } = await service.execute({
+      email: 'fake-email',
+      password: 'fake-password',
+    });
+
+    expect(user).toEqual(userCreated);
+    expect(token).not.toBeUndefined();
   });
 });
