@@ -18,18 +18,15 @@ export default class UpdateUserService {
     private usersRepository: IUsersRepository,
   ) {}
 
-  public async execute({ email, name, id }: IRequest): Promise<User> {
-    const findedUser = await this.usersRepository.findById(id);
+  public async execute(userDataToUpdate: IRequest): Promise<User> {
+    const findedUser = await this.usersRepository.findById(userDataToUpdate.id);
 
     if (!findedUser) {
       throw new AppError('User not found');
     }
 
     const user = await this.usersRepository.save(
-      Object.assign(findedUser, {
-        email,
-        name,
-      }),
+      Object.assign(findedUser, userDataToUpdate),
     );
 
     return user;
