@@ -1,5 +1,6 @@
-import { pathsToModuleNameMapper } from 'ts-jest/utils';
-import { compilerOptions } from '../../../../tsconfig.json';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { compilerOptions } = require('./tsconfig.json');
 
 module.exports = {
   clearMocks: true,
