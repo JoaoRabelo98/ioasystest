@@ -3,7 +3,7 @@ import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepo
 import AppError from '@shared/errors/AppError';
 import AuthenticateUserService from '../AuthenticateUserService';
 
-describe('Authenticate User Service context', async () => {
+describe('Authenticate User Service context', () => {
   let usersRepository: FakeUsersRepository;
   let hashProvider: FakeHashProvider;
   let service: AuthenticateUserService;

@@ -3,7 +3,7 @@ import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepo
 import AppError from '@shared/errors/AppError';
 import CreateUserService from '../CreateUserService';
 
-describe('Create User Service context', async () => {
+describe('Create User Service context', () => {
   let hashProvider: FakeHashProvider;
   let usersRepository: FakeUsersRepository;
   let service: CreateUserService;
@@ -30,6 +30,8 @@ describe('Create User Service context', async () => {
   });
 
   it('should not be able to create user when email is already used', async () => {
+    expect.hasAssertions();
+
     const fakePassword = `${Date.now()}`;
     const fakeMail = `${Date.now()}@mail.com`;
     await service.execute({
