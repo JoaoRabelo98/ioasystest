@@ -1,7 +1,6 @@
 import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import AppError from '@shared/errors/AppError';
-import { isTuesday } from 'date-fns';
 import AuthenticateUserService from '../AuthenticateUserService';
 import CreateUserService from '../CreateUserService';
 
