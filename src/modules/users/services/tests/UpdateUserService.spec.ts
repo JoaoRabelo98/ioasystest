@@ -65,4 +65,21 @@ describe('Update User Service context', () => {
     expect(userUpdated.email).toBe('fake-mail');
     expect(userUpdated.name).toBe('fake-user-name');
   });
+
+  it('should be able to update a name of user', async () => {
+    const { id } = await createUserService.execute({
+      email: 'fake-user-mail',
+      name: 'fake-user-name',
+      password: 'fake-user-password',
+    });
+
+    const userUpdated = await service.execute({
+      id,
+      name: 'fake-name',
+    });
+
+    expect(userUpdated.id).toBe(id);
+    expect(userUpdated.email).toBe('fake-user-mail');
+    expect(userUpdated.name).toBe('fake-name');
+  });
 });
