@@ -1,8 +1,6 @@
-import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import AppError from '@shared/errors/AppError';
 import { uuid } from 'uuidv4';
-import CreateUserService from '../CreateUserService';
 import UpdateUserService from '../UpdateUserService';
 
 describe('Update User Service context', () => {
