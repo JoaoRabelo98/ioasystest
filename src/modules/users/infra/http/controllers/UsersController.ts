@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import CreateUserService from '@modules/users/services/CreateUserService';
 import { classToClass } from 'class-transformer';
 import UpdateUserService from '@modules/users/services/UpdateUserService';
+import InactivateUserService from '@modules/users/services/InactivateUserService';
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -17,7 +18,7 @@ export default class UsersController {
       name,
     });
 
-    return response.json(classToClass(userCreated));
+    return response.status(201).json(classToClass(userCreated));
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
@@ -33,5 +34,15 @@ export default class UsersController {
     });
 
     return response.json(classToClass(userCreated));
+  }
+
+  public async inactivate(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const inactivateUserService = container.resolve(InactivateUserService);
+
+    await inactivateUserService.execute(id);
+
+    return response.status(204).send();
   }
 }
