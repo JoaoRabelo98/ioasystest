@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import { celebrate, Segments, Joi } from 'celebrate';
+import configValidateRoute from '@config/route';
 import UsersController from '../controllers/UsersController';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
@@ -17,7 +18,7 @@ usersRouter.post(
         password: Joi.string(),
       },
     },
-    { abortEarly: false },
+    configValidateRoute,
   ),
   usersController.create,
 );
@@ -32,7 +33,7 @@ usersRouter.put(
         email: Joi.string().email().optional(),
       },
     },
-    { abortEarly: false },
+    configValidateRoute,
   ),
   usersController.update,
 );
