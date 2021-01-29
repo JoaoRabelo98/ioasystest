@@ -22,9 +22,13 @@ export default function ensureAuthenticated(
     throw new AppError('JWT token is missing!😖', 401);
   }
 
-  const [, token] = authHeader.split(' ');
+  const [format, token] = authHeader.split(' ');
 
   try {
+    if (format !== 'Bearer') {
+      throw new AppError('Invalid JWT token 😭😭', 401);
+    }
+
     const decodedToken = verify(token, authConfig.jwt.secret);
 
     const { sub } = decodedToken as ITokenPayload;
