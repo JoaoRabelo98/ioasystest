@@ -23,6 +23,9 @@ class User {
   @Column()
   email: string;
 
+  @Column({ default: true })
+  active: boolean;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
