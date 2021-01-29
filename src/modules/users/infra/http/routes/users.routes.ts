@@ -14,8 +14,9 @@ usersRouter.post(
   celebrate(
     {
       [Segments.BODY]: {
-        password: Joi.string(),
-        ...validateNameAndEmailOfUser,
+        password: Joi.string().required(),
+        name: Joi.string().required(),
+        email: Joi.string().email().required(),
       },
     },
     configValidateRoute,

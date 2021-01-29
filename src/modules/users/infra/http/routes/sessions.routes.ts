@@ -12,7 +12,7 @@ sessionsRouter.post(
     {
       [Segments.BODY]: {
         email: Joi.string().email().required(),
-        password: Joi.string(),
+        password: Joi.string().required(),
       },
     },
     configValidateRoute,
