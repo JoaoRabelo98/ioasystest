@@ -6,7 +6,7 @@ import Actor from '../entities/Actor';
 export default class ActorsRepository implements IActorsRepository {
   private ormRepository: Repository<Actor>;
 
-  public async crate({ name }: ICreateActorDTO): Promise<Actor> {
+  public async create({ name }: ICreateActorDTO): Promise<Actor> {
     const actorTocreate = this.ormRepository.create({
       name,
     });

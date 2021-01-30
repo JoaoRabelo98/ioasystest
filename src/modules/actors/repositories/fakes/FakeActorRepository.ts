@@ -6,7 +6,7 @@ import IActorsRepository from '../IActorsRepository';
 export default class FakeActorRepository implements IActorsRepository {
   private actors: Array<Actor> = [];
 
-  public async crate({ name }: ICreateActorDTO): Promise<Actor> {
+  public async create({ name }: ICreateActorDTO): Promise<Actor> {
     const actor = {
       id: uuid(),
       name,
