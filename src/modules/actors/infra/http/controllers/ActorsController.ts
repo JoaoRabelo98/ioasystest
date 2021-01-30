@@ -7,7 +7,6 @@ import CreateActorService from '@modules/actors/services/CreateActorService';
 export default class ActorsController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { name } = request.body;
-    console.log(name);
 
     const createActorService = container.resolve(CreateActorService);
 
