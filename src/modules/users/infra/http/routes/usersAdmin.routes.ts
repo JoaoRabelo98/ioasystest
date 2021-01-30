@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import { celebrate, Segments, Joi } from 'celebrate';
 import configValidateRoute from '@config/route';
+import validateNameAndEmailOfUser from '@modules/users/common/validations/validateNameEmailOfUser';
 import UsersAdminController from '../controllers/UsersAdminController';
 
 const usersAdminRoutes = Router();
@@ -20,6 +21,19 @@ usersAdminRoutes.post(
     configValidateRoute,
   ),
   usersAdminController.create,
+);
+
+usersAdminRoutes.put(
+  '/',
+  celebrate(
+    {
+      [Segments.BODY]: {
+        ...validateNameAndEmailOfUser,
+      },
+    },
+    configValidateRoute,
+  ),
+  usersAdminController.update,
 );
 
 export default usersAdminRoutes;
