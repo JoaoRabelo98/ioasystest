@@ -10,6 +10,10 @@ export default class ActorsRepository implements IActorsRepository {
     this.ormRepository = getRepository(Actor);
   }
 
+  public async findByIds(ids: string[]): Promise<Actor[]> {
+    return this.ormRepository.findByIds(ids);
+  }
+
   public async create({ name }: ICreateActorDTO): Promise<Actor> {
     const actorTocreate = this.ormRepository.create({
       name,

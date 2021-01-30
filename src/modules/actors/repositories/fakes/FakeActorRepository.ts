@@ -20,4 +20,10 @@ export default class FakeActorRepository implements IActorsRepository {
   public async findById(id: string): Promise<Actor | undefined> {
     return this.actors.find(actor => actor.id === id);
   }
+
+  public async findByIds(ids: string[]): Promise<Actor[]> {
+    return this.actors.filter(actor => {
+      return !!ids.find(id => id === actor.id);
+    });
+  }
 }
