@@ -26,7 +26,7 @@ export default class MooviesRepository implements IMooviesRepository {
     return this.ormRepository.findOne(id);
   }
 
-  findAll(): Promise<Moovie[]> {
+  public async findAll(): Promise<Moovie[]> {
     return this.ormRepository.find();
   }
 }
