@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import Actor from '@modules/actors/infra/typeorm/entities/Actor';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('moovies')
 export default class Moovie {
@@ -13,4 +20,8 @@ export default class Moovie {
 
   @Column()
   genre: string;
+
+  @ManyToMany(() => Actor)
+  @JoinTable()
+  actors: Actor[];
 }
