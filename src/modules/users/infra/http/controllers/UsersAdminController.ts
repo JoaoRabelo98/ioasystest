@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
 import CreateUserAdminService from '@modules/users/services/CreateUserAdminService';
+import UpdateUserService from '@modules/users/services/UpdateUserService';
 
 export default class UsersAdminController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -17,5 +18,20 @@ export default class UsersAdminController {
     });
 
     return response.status(201).json(classToClass(adminCreated));
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { name, email } = request.body;
+    const { id } = request.user;
+
+    const updateUserService = container.resolve(UpdateUserService);
+
+    const userCreated = await updateUserService.execute({
+      id,
+      email,
+      name,
+    });
+
+    return response.json(classToClass(userCreated));
   }
 }
