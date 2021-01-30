@@ -8,6 +8,7 @@
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts tsc ",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "migration:revert": "typeorm migration:revert",
+    "clean-database": "npm run typeorm schema:drop && npm run typeorm migration:run",
     "test": "jest",
     "clean-jest": "jest --clearCache",
     "tdd": "jest --watch --verbose=true"
