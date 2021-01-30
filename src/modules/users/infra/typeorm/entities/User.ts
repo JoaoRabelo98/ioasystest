@@ -26,6 +26,9 @@ class User {
   @Column({ default: true })
   active: boolean;
 
+  @Column({ default: false })
+  isAdmin: boolean;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
