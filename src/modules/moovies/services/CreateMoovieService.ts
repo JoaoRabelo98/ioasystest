@@ -26,9 +26,7 @@ export default class CreateMoovieService {
       director,
     });
 
-    const actorsFinded = await this.actorsRepository.findByIds(actors);
-
-    moovie.actors = actorsFinded;
+    moovie.actors = await this.actorsRepository.findByIds(actors);
 
     return this.mooviesRepository.save(moovie);
   }
