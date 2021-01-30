@@ -1,3 +1,4 @@
+import User from '@modules/users/infra/typeorm/entities/User';
 import {
   Column,
   Entity,
@@ -18,7 +19,14 @@ export default class VoteMoovie {
   @Column()
   moovieId: string;
 
+  @Column()
+  userId: string;
+
   @ManyToOne(() => Moovie)
   @JoinColumn({ name: 'moovieId' })
   moovie: Moovie;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'userId' })
+  user: User;
 }
