@@ -11,7 +11,7 @@ export default class ActorsRepository implements IActorsRepository {
       name,
     });
 
-    return this.ormRepository.create(actorTocreate);
+    return this.ormRepository.save(actorTocreate);
   }
 
   findById(id: string): Promise<Actor | undefined> {
