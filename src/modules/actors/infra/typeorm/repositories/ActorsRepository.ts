@@ -1,10 +1,14 @@
 import ICreateActorDTO from '@modules/actors/dtos/ICreateActorDTO';
 import IActorsRepository from '@modules/actors/repositories/IActorsRepository';
-import { Repository } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 import Actor from '../entities/Actor';
 
 export default class ActorsRepository implements IActorsRepository {
   private ormRepository: Repository<Actor>;
+
+  constructor() {
+    this.ormRepository = getRepository(Actor);
+  }
 
   public async create({ name }: ICreateActorDTO): Promise<Actor> {
     const actorTocreate = this.ormRepository.create({
