@@ -26,6 +26,7 @@ class User {
   @Column({ default: true })
   active: boolean;
 
+  @Exclude()
   @Column({ default: false })
   isAdmin: boolean;
 
