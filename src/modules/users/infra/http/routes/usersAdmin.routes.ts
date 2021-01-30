@@ -36,9 +36,8 @@ usersAdminRoutes.put(
   usersAdminController.update,
 );
 
-usersRouter.patch(
+usersAdminRoutes.patch(
   '/:id',
-  ensureAuthenticated,
   celebrate(
     {
       [Segments.PARAMS]: {
@@ -47,7 +46,7 @@ usersRouter.patch(
     },
     configValidateRoute,
   ),
-  usersController.inactivate,
+  usersAdminController.inactivate,
 );
 
 export default usersAdminRoutes;
