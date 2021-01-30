@@ -4,8 +4,10 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import VoteMoovie from './VoteMoovie';
 
 @Entity('moovies')
 export default class Moovie {
@@ -24,4 +26,7 @@ export default class Moovie {
   @ManyToMany(() => Actor)
   @JoinTable()
   actors: Actor[];
+
+  @OneToMany(() => VoteMoovie, votes => votes.moovie)
+  votes: Array<VoteMoovie>;
 }
