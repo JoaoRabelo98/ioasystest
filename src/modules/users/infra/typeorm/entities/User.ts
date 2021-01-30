@@ -23,6 +23,7 @@ class User {
   @Column()
   email: string;
 
+  @Exclude()
   @Column({ default: true })
   active: boolean;
 
