@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
 import CreateUserAdminService from '@modules/users/services/CreateUserAdminService';
 import UpdateUserService from '@modules/users/services/UpdateUserService';
+import InactivateUserService from '@modules/users/services/InactivateUserService';
 
 export default class UsersAdminController {
   public async create(request: Request, response: Response): Promise<Response> {
