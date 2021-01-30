@@ -36,4 +36,18 @@ usersAdminRoutes.put(
   usersAdminController.update,
 );
 
+usersRouter.patch(
+  '/:id',
+  ensureAuthenticated,
+  celebrate(
+    {
+      [Segments.PARAMS]: {
+        id: Joi.string().uuid().required(),
+      },
+    },
+    configValidateRoute,
+  ),
+  usersController.inactivate,
+);
+
 export default usersAdminRoutes;

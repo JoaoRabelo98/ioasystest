@@ -34,4 +34,14 @@ export default class UsersAdminController {
 
     return response.json(classToClass(userCreated));
   }
+
+  public async inactivate(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const inactivateUserService = container.resolve(InactivateUserService);
+
+    await inactivateUserService.execute(id);
+
+    return response.status(204).send();
+  }
 }
