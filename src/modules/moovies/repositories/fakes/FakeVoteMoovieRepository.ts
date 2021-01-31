@@ -17,6 +17,6 @@ export default class FakeVoteMoovieRepository implements IVoteMoovieRepository {
   }
 
   public async findByMoovie(moovieId: string): Promise<VoteMoovie[]> {
-    return this.voteMoovies.find(vote => vote.moovieId === moovieId);
+    return this.voteMoovies.filter(vote => vote.moovieId === moovieId);
   }
 }
