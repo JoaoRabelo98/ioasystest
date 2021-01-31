@@ -5,7 +5,7 @@ import usersAdminRoutes from '@modules/users/infra/http/routes/usersAdmin.routes
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import ensureAdmin from '@modules/users/infra/http/middlewares/ensureAdmin';
 import actorsRoute from '@modules/actors/infra/http/routes/actors.routes';
-import mooviesRoutes from '@modules/moovies/infra/http/routes/sessions.routes';
+import mooviesRoutes from '@modules/moovies/infra/http/routes/moovies.routes';
 import voteMoovieRouter from '@modules/moovies/infra/http/routes/vote.routes';
 
 const routes = Router();
