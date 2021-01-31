@@ -10,14 +10,6 @@ export default class VoteMoovieRepository implements IVoteMoovieRepository {
     this.ormRepository = getRepository(VoteMoovie);
   }
 
-  public async findByMoovie(moovieId: string): Promise<VoteMoovie[]> {
-    return this.ormRepository.find({
-      where: {
-        moovieId,
-      },
-    });
-  }
-
   public async create(voteData: ICreateVoteMoovieDTO): Promise<VoteMoovie> {
     const voteMoovie = this.ormRepository.create(voteData);
 

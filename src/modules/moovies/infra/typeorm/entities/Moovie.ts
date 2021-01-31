@@ -23,10 +23,10 @@ export default class Moovie {
   @Column()
   genre: string;
 
-  @ManyToMany(() => Actor)
+  @ManyToMany(() => Actor, { eager: true })
   @JoinTable()
   actors: Actor[];
 
-  @OneToMany(() => VoteMoovie, votes => votes.moovie)
+  @OneToMany(() => VoteMoovie, votes => votes.moovie, { eager: true })
   votes: Array<VoteMoovie>;
 }
