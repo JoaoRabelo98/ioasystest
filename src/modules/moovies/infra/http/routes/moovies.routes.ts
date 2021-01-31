@@ -34,7 +34,7 @@ mooviesRoutes.get(
     },
     configValidateRoute,
   ),
-  mooviesController.create,
+  mooviesController.findOne,
 );
 
 export default mooviesRoutes;
