@@ -1,4 +1,3 @@
-import { query } from 'express';
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
 export default class CrateUserAdmin1612064950472 implements MigrationInterface {
