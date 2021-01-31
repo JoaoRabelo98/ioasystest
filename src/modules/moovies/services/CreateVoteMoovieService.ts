@@ -1,3 +1,4 @@
+import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import ICreateVoteMoovieDTO from '../dtos/ICreateVoteMoovieDTO';
@@ -13,6 +14,9 @@ export default class CreateVoteMoovieService {
 
     @inject('MooviesRepository')
     private mooviesRepository: IMooviesRepository,
+
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
   ) {}
 
   public async execute({
@@ -20,10 +24,20 @@ export default class CreateVoteMoovieService {
     rate,
     userId,
   }: ICreateVoteMoovieDTO): Promise<VoteMoovie> {
+    if (rate < 1 || rate > 4) {
+      throw new AppError('Invalid rate of vote');
+    }
+
     const moovieExists = await this.mooviesRepository.findOne(moovieId);
 
     if (!moovieExists) {
       throw new AppError('Moovie not found');
+    }
+
+    const userExists = await this.usersRepository.findById(userId);
+
+    if (!userExists) {
+      throw new AppError('User not found');
     }
 
     return this.voteMooviesRepository.create({

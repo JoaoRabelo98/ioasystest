@@ -1,5 +1,5 @@
 export default interface ICreateVoteMoovieDTO {
-  rate: number;
+  rate: 1 | 2 | 3 | 4;
 
   moovieId: string;
 
