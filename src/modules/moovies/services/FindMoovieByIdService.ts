@@ -10,13 +10,25 @@ export default class FindMoovieByIdService {
     private mooviesRepository: IMooviesRepository,
   ) {}
 
-  public async execute(id: string): Promise<Moovie> {
+  public async execute(id: string): Promise<Moovie & { averageOfVotes: number }> {
     const moovieFinded = await this.mooviesRepository.findOne(id);
 
     if (!moovieFinded) {
       throw new AppError('Moovie not found');
     }
 
-    return moovieFinded;
+    let average = 0;
+
+    if (moovieFinded.votes && moovieFinded.votes.length > 0) {
+      average = moovieFinded.votes.reduce((accumulator, { rate }) => {
+        const currentAverage = rate / moovieFinded.votes.length;
+
+        return accumulator + currentAverage;
+      }, 0);
+    }
+    return {
+      ...moovieFinded,
+      averageOfVotes: Number(average.toFixed(2)),
+    };
   }
 }
