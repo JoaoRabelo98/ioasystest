@@ -24,4 +24,17 @@ mooviesRoutes.post(
   mooviesController.create,
 );
 
+mooviesRoutes.get(
+  '/:id',
+  celebrate(
+    {
+      [Segments.PARAMS]: {
+        id: Joi.string().uuid().required(),
+      },
+    },
+    configValidateRoute,
+  ),
+  mooviesController.create,
+);
+
 export default mooviesRoutes;
