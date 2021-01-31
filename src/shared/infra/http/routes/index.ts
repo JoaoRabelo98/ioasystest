@@ -5,12 +5,14 @@ import usersAdminRoutes from '@modules/users/infra/http/routes/usersAdmin.routes
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import ensureAdmin from '@modules/users/infra/http/middlewares/ensureAdmin';
 import actorsRoute from '@modules/actors/infra/http/routes/actors.routes';
+import mooviesRoutes from '@modules/moovies/infra/http/routes/sessions.routes';
 
 const routes = Router();
 
 routes.use('/users', usersRouter);
 routes.use('/admin', ensureAuthenticated, ensureAdmin, usersAdminRoutes);
 routes.use('/sessions', sessionsRouter);
-routes.use('/actors', actorsRoute);
+routes.use('/moovies', ensureAuthenticated, mooviesRoutes);
+routes.use('/actors', ensureAuthenticated, actorsRoute);
 
 export default routes;
