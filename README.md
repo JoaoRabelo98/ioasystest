@@ -1,4 +1,4 @@
-<h3 align="center">GoBarber</h3>
+<h3 align="center">Teste ioasys</h3>
 
 <div align="center">
 
@@ -6,57 +6,44 @@
 
 ---
 
-<p align="center"> Project developed with the mentoring of <a href="https://github.com/diego3g">Diego Fernandes </a>
-    <br>
-</p>
+## 📝 Conteúdo
 
-## 📝 Contents
+- [Començando](#getting_started)
+- [Testes](#tests)
+- [Requests](#requests)
 
-- [About](#about)
-- [Get-Started](#getting_started)
-- [Tests](#tests)
-- [Run in dev](#deployment)
+## 🏁 Començando <a name = "getting_started"></a>
 
-- [Integrations](#acknowledgement)
-
-## 🧐 About <a name = "about"></a>
-
-Project development in GoStack of RocketSeat
-
-## 🏁 Getting Started <a name = "getting_started"></a>
-
-To run in your machine, follow the steps below.
+Para começar vamos seguir os seguintes passos abaixo: 
 
 ```
-git clone https://github.com/JoaoRabelo98/gobarbernode.git
+git clone https://github.com/JoaoRabelo98/ioasystest.git
 
-cd gobarbernode
+cd ioasystest
 
 yarn
-
-docker run --name mongodb -p 27017:27017 -d -t mongo
-
-docker run --name redis -p 6379:6379 -d -t redis:alpine
 
 docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 
 yarn typeorm migration:run
 
+yarn dev:server
 
 ```
 
-## 🔧 Running the tests <a name = "tests"></a>
+Agora o projeto já está ronando em sua máquina local 😁🔝
 
-To tests in your machine, run the command below.
+## 🔧 Rodando os teste <a name = "tests"></a>
+
+Para rodar os testes em sua máquina, realize o seguinte comando abaixo: 
 
 ```
 yarn test
 ```
 
-## 🎉 Integrations and Databases <a name = "acknowledgement"></a>
+## 🌎👨‍💻👩‍💻 Fazendo as requisções HTTP <a name = "requests"></a>
 
-- [Amazon SES](https://github.com/JoaoRabelo98/gobarbernode/blob/master/src/shared/container/providers/MailProvider/implementations/SESMailProvider.ts)
-- [Amazon S3](https://github.com/JoaoRabelo98/gobarbernode/blob/master/src/shared/container/providers/StorageProvider/implementations/S3StorageProvider.ts)
-- [Postgres](https://github.com/JoaoRabelo98/gobarbernode/blob/master/src/modules/users/infra/typeorm/repositories/UsersRepository.ts)
-- [MonboDB](https://github.com/JoaoRabelo98/gobarbernode/blob/master/src/modules/notifications/infra/typeorm/repositories/NotificationsRepository.ts)
-- [Redis](https://github.com/JoaoRabelo98/gobarbernode/blob/master/src/shared/container/providers/CacheProvider/implementations/RedisCacheProvider.ts)
+Para fazer as requisições considere instalar o insomnia em sua máquina:
+
+- [Download insomnia](https://insomnia.rest/download/)
+
