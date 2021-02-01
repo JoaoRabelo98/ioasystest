@@ -38,7 +38,7 @@ describe('Find All Moovies context', () => {
   });
 
   it('should be find moovies correctly', async () => {
-    const mooviesFinded = await service.execute();
+    const mooviesFinded = await service.execute({});
 
     expect(
       mooviesFinded.findIndex(item => item.id === moovie.id),

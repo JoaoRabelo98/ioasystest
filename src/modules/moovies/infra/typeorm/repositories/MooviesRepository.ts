@@ -1,5 +1,6 @@
 import ICreateMoovieDTO from '@modules/moovies/dtos/ICreateMoovieDTO';
 import IMooviesRepository from '@modules/moovies/repositories/IMooviesRepository';
+import { OptionsTypeOrmGetAllWithoutPagination } from '@seidor-cloud-produtos/typeorm';
 import { getRepository, Repository } from 'typeorm';
 import Moovie from '../entities/Moovie';
 
@@ -26,7 +27,11 @@ export default class MooviesRepository implements IMooviesRepository {
     return this.ormRepository.findOne(id);
   }
 
-  public async findAll(): Promise<Moovie[]> {
-    return this.ormRepository.find();
+  public async findAll(
+    filterOptions: OptionsTypeOrmGetAllWithoutPagination,
+  ): Promise<Moovie[]> {
+    return this.ormRepository.find({
+      where: filterOptions.where,
+    });
   }
 }

@@ -35,7 +35,13 @@ export default class MooviesController {
   public async findAll(request: Request, response: Response): Promise<Response> {
     const findMoovieService = container.resolve(ListAllMooviesService);
 
-    const moovies = await findMoovieService.execute();
+    const { name, director, genre } = request.query;
+
+    const moovies = await findMoovieService.execute({
+      name: name?.toString(),
+      director: director?.toString(),
+      genre: genre?.toString(),
+    });
 
     return response.json(classToClass(moovies));
   }

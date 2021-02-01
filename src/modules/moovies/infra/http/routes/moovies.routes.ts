@@ -39,14 +39,16 @@ mooviesRoutes.get(
 
 mooviesRoutes.get(
   '/',
-  // celebrate(
-  //   {
-  //     [Segments.PARAMS]: {
-  //       id: Joi.string().uuid().required(),
-  //     },
-  //   },
-  //   configValidateRoute,
-  // ),
+  celebrate(
+    {
+      [Segments.QUERY]: {
+        name: Joi.string().optional(),
+        director: Joi.string().optional(),
+        genre: Joi.string().optional(),
+      },
+    },
+    configValidateRoute,
+  ),
   mooviesController.findAll,
 );
 
