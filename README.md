@@ -51,3 +51,9 @@ Para fazer as requisições considere instalar o insomnia em sua máquina:
 
 [Download insomnia](https://insomnia.rest/download/)
 
+Faça o download do workspace no seguinte link: [Workspace Inosmnia ioasys](https://github.com/JoaoRabelo98/ioasystest/blob/main/requestIoasys.json)
+
+Faça a importação dentro do insomnia. Para saber como importar workspaces no insomnia, siga os passos desse link: [Como importar workspaces no insomnia](https://support.insomnia.rest/article/52-importing-and-exporting-data)
+
+Feito isso, pode fazer as request normalmente. 😁🔝
+
