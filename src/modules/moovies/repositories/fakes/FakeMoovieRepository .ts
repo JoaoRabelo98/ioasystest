@@ -1,5 +1,4 @@
 import ICreateMoovieDTO from '@modules/moovies/dtos/ICreateMoovieDTO';
-import IFilterOptionsMoovie from '@modules/moovies/dtos/IFilterOptionsMoovie';
 import IListAllMooviesOptionsDTO from '@modules/moovies/dtos/IListAllMooviesOptionsDTO';
 import Moovie from '@modules/moovies/infra/typeorm/entities/Moovie';
 import { uuid } from 'uuidv4';
