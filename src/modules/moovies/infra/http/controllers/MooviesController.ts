@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
 import CreateMoovieService from '@modules/moovies/services/CreateMoovieService';
 import FindMoovieByIdService from '@modules/moovies/services/FindMoovieByIdService';
+import ListAllMooviesService from '@modules/moovies/services/ListAllMooviesService';
 
 export default class MooviesController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -29,5 +30,13 @@ export default class MooviesController {
     const moovie = await findMoovieService.execute(id);
 
     return response.json(classToClass(moovie));
+  }
+
+  public async findAll(request: Request, response: Response): Promise<Response> {
+    const findMoovieService = container.resolve(ListAllMooviesService);
+
+    const moovies = await findMoovieService.execute();
+
+    return response.json(classToClass(moovies));
   }
 }

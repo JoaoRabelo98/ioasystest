@@ -37,4 +37,17 @@ mooviesRoutes.get(
   mooviesController.findOne,
 );
 
+mooviesRoutes.get(
+  '/',
+  // celebrate(
+  //   {
+  //     [Segments.PARAMS]: {
+  //       id: Joi.string().uuid().required(),
+  //     },
+  //   },
+  //   configValidateRoute,
+  // ),
+  mooviesController.findAll,
+);
+
 export default mooviesRoutes;
