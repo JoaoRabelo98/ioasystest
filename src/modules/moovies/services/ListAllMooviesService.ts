@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-syntax */
 import { inject, injectable } from 'tsyringe';
-import { Raw } from 'typeorm';
 import Moovie from '../infra/typeorm/entities/Moovie';
 import IMooviesRepository from '../repositories/IMooviesRepository';
 import IListAllMooviesOptionsDTO from '../dtos/IListAllMooviesOptionsDTO';
