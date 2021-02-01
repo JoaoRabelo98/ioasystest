@@ -1,5 +1,6 @@
+/* eslint-disable no-restricted-syntax */
 import { inject, injectable } from 'tsyringe';
-import { formatParamsToTypeOrmOptionsWithoutPaginate } from '@seidor-cloud-produtos/typeorm';
+import { Raw } from 'typeorm';
 import Moovie from '../infra/typeorm/entities/Moovie';
 import IMooviesRepository from '../repositories/IMooviesRepository';
 import IListAllMooviesOptionsDTO from '../dtos/IListAllMooviesOptionsDTO';
@@ -12,9 +13,6 @@ export default class ListAllMooviesService {
   ) {}
 
   public async execute(filters: IListAllMooviesOptionsDTO): Promise<Array<Moovie>> {
-    const filterOptions = formatParamsToTypeOrmOptionsWithoutPaginate(filters);
-
-    console.log(filterOptions);
-    return this.mooviesRepository.findAll(filterOptions);
+    return this.mooviesRepository.findAll(filters);
   }
 }

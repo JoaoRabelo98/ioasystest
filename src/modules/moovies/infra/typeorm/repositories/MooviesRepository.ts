@@ -1,7 +1,8 @@
+/* eslint-disable no-restricted-syntax */
 import ICreateMoovieDTO from '@modules/moovies/dtos/ICreateMoovieDTO';
+import IListAllMooviesOptionsDTO from '@modules/moovies/dtos/IListAllMooviesOptionsDTO';
 import IMooviesRepository from '@modules/moovies/repositories/IMooviesRepository';
-import { OptionsTypeOrmGetAllWithoutPagination } from '@seidor-cloud-produtos/typeorm';
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Raw, Repository } from 'typeorm';
 import Moovie from '../entities/Moovie';
 
 export default class MooviesRepository implements IMooviesRepository {
@@ -27,11 +28,18 @@ export default class MooviesRepository implements IMooviesRepository {
     return this.ormRepository.findOne(id);
   }
 
-  public async findAll(
-    filterOptions: OptionsTypeOrmGetAllWithoutPagination,
-  ): Promise<Moovie[]> {
+  public async findAll(filterOptions: IListAllMooviesOptionsDTO): Promise<Moovie[]> {
+    let whereClause: Record<string, unknown> = {};
+
+    for (const [key, value] of Object.entries(filterOptions)) {
+      whereClause = {
+        ...whereClause,
+        [key]: Raw(alias => `CAST(${alias} AS VARCHAR) ILIKE '%${value}%'`),
+      };
+    }
+
     return this.ormRepository.find({
-      where: filterOptions.where,
+      ...whereClause,
     });
   }
 }

@@ -1,6 +1,7 @@
 import ICreateMoovieDTO from '@modules/moovies/dtos/ICreateMoovieDTO';
+import IFilterOptionsMoovie from '@modules/moovies/dtos/IFilterOptionsMoovie';
+import IListAllMooviesOptionsDTO from '@modules/moovies/dtos/IListAllMooviesOptionsDTO';
 import Moovie from '@modules/moovies/infra/typeorm/entities/Moovie';
-import { OptionsTypeOrmGetAllWithoutPagination } from '@seidor-cloud-produtos/typeorm';
 import { uuid } from 'uuidv4';
 import IMooviesRepository from '../IMooviesRepository';
 
@@ -27,10 +28,8 @@ export default class FakeMoovieRepository implements IMooviesRepository {
     return this.moovies.find(item => item.id === id);
   }
 
-  public async findAll(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    filterOptions: OptionsTypeOrmGetAllWithoutPagination,
-  ): Promise<Moovie[]> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public async findAll(filterOptions: IListAllMooviesOptionsDTO): Promise<Moovie[]> {
     return this.moovies;
   }
 }
