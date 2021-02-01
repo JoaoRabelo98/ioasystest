@@ -25,6 +25,10 @@ yarn
 
 docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 
+```
+Agora crie um banco chamado: **ioasysteste**
+
+```
 yarn typeorm migration:run
 
 yarn dev:server
@@ -45,5 +49,5 @@ yarn test
 
 Para fazer as requisições considere instalar o insomnia em sua máquina:
 
-- [Download insomnia](https://insomnia.rest/download/)
+[Download insomnia](https://insomnia.rest/download/)
 
